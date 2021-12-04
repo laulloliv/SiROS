@@ -1,2 +1,11 @@
-package PACKAGE_NAME;public class Perfil {
+import javax.swing.*;
+import java.awt.*;
+
+public class Perfil extends JFrame {
+
+    public Perfil(){
+
+
+    }
+
 }

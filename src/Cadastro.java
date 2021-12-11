@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class Cadastro extends JDialog implements ActionListener{
 
     public JLabel lNome, lEmail, lDataNasc, lSexo, lSenha;
-    public JTextField tfNome, tfEmail, tfDataNasc, tfUsuario;
+    public JTextField tfNome, tfEmail, tfDataNasc;
     public JPasswordField tfSenha;
     public JComboBox cbSexo;
     public JButton bSalvar, bCancelar;
@@ -20,11 +20,14 @@ public class Cadastro extends JDialog implements ActionListener{
         super(owner, title, modal);
         this.siros = siros;
         setTitle("SiROS");
+        ImageIcon iLogo = new ImageIcon("src/imgs/icon01.png");
+        setIconImage(iLogo.getImage());
         setResizable(false);
         setBounds(400,200,480,400);
 
         Container areaTrabalho = getContentPane();
         areaTrabalho.setLayout(null);
+        areaTrabalho.setBackground(new Color(93,63, 211));
 
         lNome = new JLabel("Nome / NickName");
         lNome.setBounds(20,25,120,40);
@@ -72,16 +75,6 @@ public class Cadastro extends JDialog implements ActionListener{
         tfSenha.setBounds(20, 200, 180, 30);
         tfSenha.setFont(new Font("TimesRoman", Font.BOLD, 12));
 
-        //-----Botões
-        bSalvar = new JButton("Salvar");
-        bSalvar.setBounds(90, 300, 120, 30);
-        areaTrabalho.add(bSalvar);
-
-        bCancelar = new JButton("Cancelar");
-        bCancelar.addActionListener(this);
-        bCancelar.setBounds(250, 300, 120, 30);
-        areaTrabalho.add(bCancelar);
-
 
         //Painel para agrupar objetos
         String titulo = "Cadastro de Usuário";
@@ -90,7 +83,7 @@ public class Cadastro extends JDialog implements ActionListener{
                 TitledBorder.DEFAULT_JUSTIFICATION , TitledBorder.DEFAULT_POSITION , new Font("TimesRoman", Font.PLAIN, 18));
 
         JPanel pCadastro = new JPanel();
-        pCadastro.setBounds(30, 10, 405, 260);
+        pCadastro.setBounds(30, 30, 405, 260);
         pCadastro.setLayout(null);
         pCadastro.setBorder(bordaTitulo);
 
@@ -105,7 +98,21 @@ public class Cadastro extends JDialog implements ActionListener{
         pCadastro.add(lSenha);
         pCadastro.add(tfSenha);
 
+        pCadastro.setBackground(new Color(252, 245, 95));
         areaTrabalho.add(pCadastro);
+
+        //-----Botões
+        bSalvar = new JButton("Salvar");
+        bSalvar.addActionListener(this);
+        bSalvar.setBounds(180, 300, 120, 30);
+        bSalvar.setBackground(Color.white);
+        areaTrabalho.add(bSalvar);
+
+        bCancelar = new JButton("Cancelar");
+        bCancelar.addActionListener(this);
+        bCancelar.setBounds(315, 300, 120, 30);
+        bCancelar.setBackground(Color.white);
+        areaTrabalho.add(bCancelar);
 
     }
 
@@ -115,8 +122,13 @@ public class Cadastro extends JDialog implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
         int temp = 0;
-        if (e.getSource()==bCancelar)
+        if (e.getSource()==bSalvar){
             setVisible(false);
+            JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!","Aviso", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if (e.getSource()==bCancelar){
+            setVisible(false);
+        }
         else
             temp = 0;
     }

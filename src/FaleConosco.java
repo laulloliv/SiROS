@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 public class FaleConosco extends JDialog{
 
     public JLabel lTexto, lContatos, lContatos2, lContatos3;
-    public JButton bSair;
     public SiROS siros;
 
     FaleConosco(Frame owner, String title, boolean modal, SiROS siros){
@@ -16,12 +15,14 @@ public class FaleConosco extends JDialog{
         super(owner, title, modal);
         this.siros = siros;
         setTitle("SiROS");
+        ImageIcon iLogo = new ImageIcon("src/imgs/icon01.png");
+        setIconImage(iLogo.getImage());
         setResizable(false);
         setBounds(400,200,400,250);
 
         Container areaTrabalho = getContentPane();
         areaTrabalho.setLayout(null);
-        //areaTrabalho.setBackground(Color.white);
+        areaTrabalho.setBackground(new Color(93,63, 211));
 
         lTexto = new JLabel("Olá! Bem-Vindo ao Fale Conosco :)");
         lTexto.setFont(new Font("TimesRoman", Font.BOLD, 18));
@@ -55,7 +56,7 @@ public class FaleConosco extends JDialog{
         pContatos.add(lContatos);
         pContatos.add(lContatos2);
         pContatos.add(lContatos3);
-        pContatos.setBackground(Color.white);
+        pContatos.setBackground(new Color(252, 245, 95));
         areaTrabalho.add(pContatos);
 
     }
@@ -63,4 +64,5 @@ public class FaleConosco extends JDialog{
     public void faleconosco(){
         siros.faleConosco();
     }
+
 }
